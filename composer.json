@@ -2,7 +2,7 @@
   "name": "pavelmaksimov25/jsonpath",
   "description": "Fork of the JSONPath implementation for parsing, searching and flattening arrays",
   "license": "MIT",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "authors": [
     {
       "name": "Stephen Frank",
