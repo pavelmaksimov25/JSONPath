@@ -27,7 +27,10 @@ class JSONPathToken
 
     public string $type;
 
-    public mixed $value;
+    /**
+     * @var mixed
+     */
+    public $value;
 
     /**
      * @throws JSONPathException

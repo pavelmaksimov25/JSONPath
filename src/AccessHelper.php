@@ -12,7 +12,7 @@ use ArrayAccess;
 
 class AccessHelper
 {
-    public static function collectionKeys(mixed $collection): array
+    public static function collectionKeys($collection): array
     {
         if (\is_object($collection)) {
             return \array_keys(\get_object_vars($collection));
@@ -21,12 +21,12 @@ class AccessHelper
         return \array_keys($collection);
     }
 
-    public static function isCollectionType(mixed $collection): bool
+    public static function isCollectionType($collection): bool
     {
         return \is_array($collection) || \is_object($collection);
     }
 
-    public static function keyExists(mixed $collection, $key, bool $magicIsAllowed = false): bool
+    public static function keyExists($collection, $key, bool $magicIsAllowed = false): bool
     {
         if ($magicIsAllowed && \is_object($collection) && \method_exists($collection, '__get')) {
             return true;
@@ -54,7 +54,7 @@ class AccessHelper
     /**
      * @todo Optimize conditions
      */
-    public static function getValue(mixed $collection, $key, bool $magicIsAllowed = false)
+    public static function getValue($collection, $key, bool $magicIsAllowed = false)
     {
         if (
             $magicIsAllowed
@@ -85,7 +85,7 @@ class AccessHelper
      * Find item in php collection by index
      * Written this way to handle instances ArrayAccess or Traversable objects
      */
-    private static function getValueByIndex(mixed $collection, $key): mixed
+    private static function getValueByIndex($collection, $key): mixed
     {
         $i = 0;
 
@@ -143,9 +143,13 @@ class AccessHelper
     }
 
     /**
+     * @param $collection object|array
+     *
+     * @return array|ArrayAccess
+     *
      * @throws JSONPathException
      */
-    public static function arrayValues(array|object $collection): array|ArrayAccess
+    public static function arrayValues($collection)
     {
         if (\is_array($collection)) {
             return \array_values($collection);

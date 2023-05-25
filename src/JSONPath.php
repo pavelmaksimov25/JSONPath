@@ -19,14 +19,17 @@ class JSONPath implements ArrayAccess, Iterator, JsonSerializable, Countable
 
     protected static array $tokenCache = [];
 
-    protected mixed $data = [];
+    /**
+     * @var mixed
+     */
+    protected $data = [];
 
     protected bool $options = false;
 
-    final public function __construct(mixed $data = [], bool $options = false)
+    final public function __construct($data = [], bool $options = null)
     {
         $this->data = $data;
-        $this->options = $options;
+        $this->options = (bool)$options;
     }
 
     /**
@@ -221,7 +224,7 @@ class JSONPath implements ArrayAccess, Iterator, JsonSerializable, Countable
     /**
      * @inheritDoc
      */
-    public function key(): string|int|null
+    public function key()
     {
         return \key($this->data);
     }

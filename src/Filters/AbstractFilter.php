@@ -18,11 +18,15 @@ abstract class AbstractFilter
 
     protected bool $magicIsAllowed = false;
 
-    public function __construct(JSONPathToken $token, int|bool $options = false)
+    public function __construct(JSONPathToken $token, $options = null)
     {
         $this->token = $token;
         $this->magicIsAllowed = (bool)($options & JSONPath::ALLOW_MAGIC);
     }
 
-    abstract public function filter(array|ArrayAccess $collection): array;
+    /**
+     * @param $collection
+     * @return array|ArrayAccess
+     */
+    abstract public function filter($collection): array;
 }
